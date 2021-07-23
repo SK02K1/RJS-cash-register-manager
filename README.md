@@ -1,2 +1,3 @@
 # RJS-cash-register-manager
-Created with CodeSandbox
+
+[Live project](https://xz3gq.csb.app/)
