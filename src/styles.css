@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap");
+
+:root {
+  --digital-font: "Orbitron", sans-serif;
+  --normal-font: "Manrope", sans-serif;
+  --bg-color: #121212;
+  --primary-color: #1e1e1e;
+  --white: #f7f7f7;
+  --accent-color: rgba(134, 133, 239, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--digital-font);
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--white);
+}
+
+h1 {
+  text-align: center;
+  font-weight: 600;
+  margin: 2rem 0.5rem;
+}
+
+p {
+  font-family: var(--normal-font);
+  font-weight: 500;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+form {
+  width: 80%;
+  min-height: 30vh;
+  margin: 1rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+input {
+  padding: 0.4rem;
+  margin-top: 0.2rem;
+  width: 100%;
+  font-family: var(--digital-font);
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+}
+
+button {
+  --accent-color: rgba(134, 133, 239, 0.5);
+  padding: 0.4rem;
+  margin: 0.5rem 0rem;
+  width: 100%;
+  cursor: pointer;
+  font-family: var(--normal-font);
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--accent-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  transition: all 400ms ease;
+}
+
+button:hover {
+  --accent-color: rgba(134, 133, 239, 1);
+  background-color: var(--accent-color);
+}
+
+.graphic {
+  display: block;
+  width: 70%;
+  height: auto;
+  margin: 1rem auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: fit-content;
+  margin: 1rem auto;
+  background-color: var(--primary-color);
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid var(--accent-color);
+  padding: 0.4rem;
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (min-width: 500px) {
+  form {
+    width: 60%;
+  }
+
+  .graphic {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  form {
+    width: 50%;
+  }
+
+  .graphic {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 1125px) {
+  form {
+    width: 30%;
+  }
+
+  .graphic {
+    width: 30%;
+  }
+}
