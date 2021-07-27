@@ -4,8 +4,8 @@ import "./styles.css";
 import soundEffectFile from "./audio/CashRegister.mp3";
 
 let isBillAmountEntered = false;
-let billAmount = "";
-let cashGiven = "";
+let billAmount = 0;
+let cashGiven = 0;
 let graphicLink = "";
 let showResult = false;
 const noteList = [2000, 500, 100, 50, 20, 10, 5, 1];
@@ -29,7 +29,11 @@ export default function App() {
   };
 
   const submitBtnClickHandler = () => {
-    if (billAmount !== "" && billAmount !== 0 && isNaN(billAmount) === false) {
+    if (
+      billAmount > 0 &&
+      isNaN(billAmount) === false &&
+      Number.isInteger(billAmount)
+    ) {
       setMessage("Submitting...");
       setTimeout(() => {
         isBillAmountEntered = true;
@@ -42,12 +46,12 @@ export default function App() {
 
   const calculateBtnClickHandler = () => {
     if (
-      billAmount !== "" &&
-      billAmount !== 0 &&
+      billAmount > 0 &&
       isNaN(billAmount) === false &&
-      cashGiven !== "" &&
-      cashGiven !== 0 &&
-      isNaN(cashGiven) === false
+      Number.isInteger(billAmount) &&
+      cashGiven > 0 &&
+      isNaN(cashGiven) === false &&
+      Number.isInteger(cashGiven)
     ) {
       if (cashGiven < billAmount) {
         graphicLink =
@@ -70,7 +74,11 @@ export default function App() {
           setMessage("result below 👇");
         }, 800);
       }
-    } else if (isNaN(billAmount) || billAmount === 0) {
+    } else if (
+      isNaN(billAmount) ||
+      billAmount <= 0 ||
+      Number.isInteger(billAmount) !== true
+    ) {
       graphicLink = "/";
       showResult = false;
       setMessage("Enter valid bill amount");
@@ -93,7 +101,7 @@ export default function App() {
         <label htmlFor="bill-amt">
           Bill amount
           <input
-            onChange={(e) => (billAmount = parseInt(e.target.value, 10))}
+            onChange={(e) => (billAmount = parseFloat(e.target.value, 10))}
             type="number"
             min="1"
             id="bill-amt"
@@ -109,7 +117,7 @@ export default function App() {
               : { display: "none" }
           }
           onClick={submitBtnClickHandler}
-          type="button"
+          type={isBillAmountEntered === false ? "submit" : "button"}
         >
           Submit
         </button>
@@ -123,7 +131,7 @@ export default function App() {
         >
           Cash given
           <input
-            onChange={(e) => (cashGiven = parseInt(e.target.value, 10))}
+            onChange={(e) => (cashGiven = parseFloat(e.target.value, 10))}
             type="number"
             min="1"
             id="cash-given"
